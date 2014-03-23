@@ -1,0 +1,74 @@
+.as-product { width: 100%; }
+
+.as-product .as-clearfix {
+  *zoom: 1;
+}
+
+.as-product .as-clearfix:before,
+.as-product .as-clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.as-product .as-clearfix:after {
+  clear: both;
+}
+
+.as-product .as-album-cover {
+  float: left;
+}
+
+.as-product .as-album-cover img {
+  width: 350px;
+  margin: 0 20px 20px;
+}
+
+.as-product .as-variants {
+  float: right;
+  width: 60%;
+}
+
+.as-product .as-variants .as-button {
+  color: #FFF;
+  background-color: #000;
+  border: 1px solid #FFF;
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding: 2px 5px 2px;
+}
+
+.as-product .as-album .as-preview a {
+  font-size: 18px;
+  background: transparent url({{ 'speaker-all.png' | asset_url}}) left center no-repeat;
+  padding: 10px 0 10px 36px;
+}
+
+.as-product .as-album .as-price {
+  width: 250px;
+  text-align: right;
+  line-height: 22px;
+}
+
+.as-product .as-tracks td {
+  padding: 2px 0;
+}
+
+.as-product .as-tracks .as-preview {
+  width: 25px;
+}
+
+.as-product .as-tracks .as-price {
+  width: 227px;
+  text-align: right;
+}
+
+.as-product .as-price form {
+  display: inline;
+  margin: 0 2px 0 0;
+}
+
+.as-product .as-description {
+  padding-top: 10px;
+}

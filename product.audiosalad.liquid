@@ -1,0 +1,73 @@
+<!-- Begin AudioSalad product -->
+<div class="as-product">
+  <div class="as-clearfix">
+    <div class="as-album-cover">
+      <img src="{{ product.featured_image | product_img_url: 'large' }}" alt="{{ product.title | escape }}" >
+    </div>
+    <div class="as-variants">
+      <h2>{{ product.title }}</h2>
+      <h3>{{ product.vendor }}</h3>
+      <table class="as-album">
+        <tbody>
+          <tr>
+            {% if product.metafields.album.player_url %}
+            <td class="as-preview">
+              <a href="{{ product.metafields.album.player_url }}" class="as-popup">Play all</a>
+            </td>
+            {% endif %}
+            <td class="as-price">
+            {% for variant in product.variants %}
+              {% if variant.option2 == 'album' %}
+                  <div>
+                    <form method="post" action="/cart/add" class="add-to-cart">
+                      <input type="hidden" name="id" value="{{ variant.id }}" />
+                      <button class="as-button" type="submit" id="add">Buy {{ variant.option3 }}</button> {{ variant.price | money }} Album
+                    </form>
+                  </div>
+              {% endif %}
+            {% endfor %}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="as-tracks">
+        <tbody>
+          {% for variant in product.variants %}
+            {% if variant.option2 == 'track' %}
+              {% unless title == variant.option1 %}
+                {% assign title = variant.option1 %}
+                <tr>
+                  <td class="as-preview">
+                    {% if variant.metafields.track.player_url %}
+                      <a href="{{ variant.metafields.track.player_url }}" class="as-popup"><img src="{{ 'speaker.png' | asset_url }}" /></a>
+                    {% endif %}
+                  </td>
+                  <td class="as-title">
+                    {{ variant.option1 }}
+                  </td>
+                  <td class="as-price">
+                    {% for variant2 in product.variants %}
+                      {% if variant2.option2 == 'track' %}
+                        {% if title == variant2.option1 or title == '' %}
+                          <form method="post" action="/cart/add" class="add-to-cart">
+                            <input type="hidden" name="id" value="{{ variant2.id }}" />
+                            <button class="as-button" type="submit" id="add">{{ variant2.option3 | split: '/' | first }} {{ variant2.price | money }}</button>
+                          </form>
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+                  </td>
+                </tr>
+              {% endunless %}
+
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="as-description">
+    {{ product.description }}
+  </div>
+</div>
+<!-- end AudioSalad product -->
