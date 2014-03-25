@@ -7,7 +7,7 @@ Default template for an AudioSalad release.
 
 The CSS and JS assets files can be included in the theme.liquid, or pasted into theme's main CSS and JS files.
 
-When including in the theme, the CSS must be included before the main CSS file.
+When including in the theme (theme.liquid), the CSS must be included before the main CSS file.
 
 ```ruby
   <!-- Require AudioSalad CSS before main stylesheet -->
